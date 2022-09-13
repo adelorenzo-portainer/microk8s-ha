@@ -49,7 +49,7 @@ echo "Adding nodes to hosts file"
 sleep .75
 for i in {0..4}
 do
-  ssh ubuntu@192.168.10.2$i -o StrictHostKeyChecking=no "curl http://192.168.10.10/microk8s_hosts_rockstar.sh | sudo bash -"
+  ssh ubuntu@192.168.10.2$i -o StrictHostKeyChecking=no "curl http://192.168.10.10/microk8s_hosts.sh | sudo bash -"
 done
 
 
@@ -92,8 +92,8 @@ done
 
 sleep 15
 
-jwt=`http --verify=no POST https://rockstar.the-edge.cloud/api/auth Username="rockstar" Password="portainer1234" | jq '.jwt' | sed 's/^.//' | sed 's/.$//'`
-http --verify=no --form POST https://rockstar.the-edge.cloud/api/endpoints "Authorization: Bearer $jwt" Name="microk8s kubernetes" URL="tcp://192.168.10.20:30778" EndpointCreationType=2 TLS="true" TLSSkipVerify="true" TLSSkipClientVerify="true"
+jwt=`http --verify=no POST https://PORTAINER SERVER IP/api/auth Username="USERNAME" Password="PASSWORD" | jq '.jwt' | sed 's/^.//' | sed 's/.$//'`
+http --verify=no --form POST https://PORTAINER SERVER IP/api/endpoints "Authorization: Bearer $jwt" Name="microk8s kubernetes" URL="tcp://192.168.10.20:30778" EndpointCreationType=2 TLS="true" TLSSkipVerify="true" TLSSkipClientVerify="true"
 
 
 echo "Adding worker nodes"
