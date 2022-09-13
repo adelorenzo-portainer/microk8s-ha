@@ -147,5 +147,5 @@ microk8s config > $HOME/.kube
 
 # Automation example script
 
-The [build_cluster.sh](https://github.com/adelorenzo-portainer/microk8s-ha/blob/main/build_cluster.sh) script is an example to automate the generation of a microk8s HA cluster and adding as an endpoint to a Portainer server. The `PORTAINER SERVER IP`, `USERNAME` and `PASSWORD` variables have to be replaced with the corresponding ones of the Portainer server that will manage the microk8s cluster.
+The [build_cluster.sh](https://github.com/adelorenzo-portainer/microk8s-ha/blob/main/build_cluster.sh) script is an example to automate the generation of a microk8s HA cluster and adding as an endpoint to a Portainer server. Make sure to change the `PORTAINER SERVER IP`, `USERNAME` and `PASSWORD` variables have to the corresponding ones of the Portainer server that will manage the microk8s cluster.
 
