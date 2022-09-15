@@ -40,14 +40,14 @@ sudo microk8s helm3 repo add csi-driver-nfs https://raw.githubusercontent.com/ku
 
 #### 3.2 Helm chart under the `kube-system` namespace with:
 ```
-helm3 install csi-driver-nfs csi-driver-nfs/csi-driver-nfs \
+sudo microk8s helm3 install csi-driver-nfs csi-driver-nfs/csi-driver-nfs \
     --namespace kube-system \
     --set kubeletDir=/var/snap/microk8s/common/var/lib/kubelet
 ```
 
 #### 3.3 Create a StorageClass for NFS:
 ```
-kubectl apply -f - <<EOY
+sudo microk8s kubectl apply -f - <<EOY
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
@@ -66,7 +66,7 @@ EOY
 
 #### 3.4 Patch the NFS StorageClass ad default:
 ```
-kubectl patch storageclass nfs-csi -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+sudo microk8s kubectl patch storageclass nfs-csi -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 ```
 
 ### 4. Create the cluster
